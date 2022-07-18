@@ -1,0 +1,219 @@
+.displ {
+  background-color: green;
+  display: flex;
+  justify-content: center;
+}
+.Contenedor_filtro {
+  position: relative;
+  top: 1px;
+}
+.select {
+  margin-right: 40px;
+  margin-top: 10px;
+  height: 30px;
+  width: 180px;
+  border-radius: 5px;
+  box-shadow: rgba(65, 96, 219, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* JJJJJJj */
+
+.crear_poke {
+  font-family: "Fantasy", cursive;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+  /* border: none; */
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 200px;
+  height: 30px;
+  justify-content: center;
+  box-shadow: rgba(223, 29, 29, 0.56) 0px 22px 100px 40px;
+  border: 5px solid rgb(0, 0, 0);
+  border-width: 1px;
+  border-radius: 10px 10px 10px 10px;
+  color: rgb(4, 13, 20);
+  transition: 0.8s;
+}
+.crear_poke:hover {
+  transform: scale(1.1);
+}
+
+.selector {
+  top: 1px;
+  bottom: 1px;
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.selector2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  position: relative;
+  top: 10px;
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 3em;
+}
+.contenedor {
+  padding-top: 5px;
+  padding-bottom: 1px;
+  position: relative;
+
+  top: 0px;
+}
+.texto {
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 7em;
+
+  /* position: absolute; */
+  top: 2em;
+  font-family: "Fantasy", cursive;
+}
+h2 {
+  text-decoration: true;
+}
+.contenedor_1pke {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-grid;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px;
+  text-decoration: none;
+  margin-top: 10px;
+  width: 220px;
+  height: 450px;
+  padding-right: 1em;
+  /* justify-content: center; */
+  box-shadow: rgba(223, 29, 29, 0.56) 0px 22px 100px 40px;
+  transition: all 2s;
+  border-radius: 20px;
+  color: rgb(56, 57, 58);
+  color: #fff;
+}
+.contenedor_1pke:hover {
+  box-shadow: rgba(59, 59, 59, 0.384) 3px 3px 6px 0px inset,
+    rgba(117, 117, 117, 0.384) -3px -3px 6px 1px inset;
+}
+.contenedor_1pke_texto {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  /* position: absolute; */
+  top: 10px;
+  color: #fff;
+  text-align: center;
+  /* padding-top: 1em;
+  padding-bottom: 1em; */
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.contenedor_pokes {
+  display: inline-grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: auto;
+  margin-top: 50px;
+  margin-left: 40px;
+}
+
+.infoContainer {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  /* position: absolute; */
+  top: 10px;
+  color: #fff;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.pokemon {
+  display: inline-grid;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.384) 0px 54px 55px,
+    rgba(0, 0, 0, 0.212) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.301) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: all 2s;
+}
+
+.pokemon:hover {
+  box-shadow: rgba(59, 59, 59, 0.384) 3px 3px 6px 0px inset,
+    rgba(117, 117, 117, 0.384) -3px -3px 6px 1px inset;
+}
+.container0 {
+  margin-top: 0;
+  width: auto;
+  height: 100px;
+  /* height: 100px; */
+  margin-bottom: 0px;
+  /* background-image: url("../images/fondo2.jpg"); */
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
+}
+
+.color1 {
+}
+
+.rowe {
+  /* .row>.col { */
+  /* padding-top: 0.75rem;
+  padding-bottom: 0.75rem; */
+  /* background-color: black; */
+  border: 1px solid red;
+  /* color: white; */
+}
+.stylo1 {
+  border: 1px solid red;
+  max-width: 250px;
+  max-height: 150px;
+  color: blue;
+
+  align-items: center;
+}
+.stylo2 {
+  border: 1px solid red;
+  background-color: black;
+  color: blue;
+}
+.stylo3 {
+  /* background-image: url(https://www.superherodb.com/pictures2/portraits/10/100/111.jpg); */
+  background-image: url(https://frasesdelavida.com/wp-content/uploads/2018/04/Frases-de-superheroes.jpg);
+  align-items: center;
+  border: 1px solid red;
+  background-color: rgba(184, 169, 169, 0.696);
+  color: blue;
+}
+
+.stylo4 {
+  width: 90%;
+}
+
+.stylo5 {
+  background: #2c4a00;
+  width: 527px;
+  height: 65px;
+}

@@ -1,0 +1,51 @@
+.estilo_l {
+  background: #0352568c;
+}
+
+.infoContainer {
+  background-color: rgba(1, 4, 51, 0.765);
+
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  /* position: absolute; */
+  top: 1px;
+  color: #fff;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+.stylo5 {
+  background: #2c4a00;
+  width: 527px;
+  height: 65px;
+}
+.stylo4 {
+  width: 90%;
+}
+
+.progress_bar {
+  border: 2px solid red;
+  border-radius: 14px;
+}
+
+.progress_bar > div {
+  color: white;
+  background: red;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes progress_bar {
+  0% {
+    width: 0;
+  }
+}
+
+@-moz-keyframes progress_bar {
+  0% {
+    width: 0;
+  }
+}
