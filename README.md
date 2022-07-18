@@ -4,7 +4,7 @@
 
 Descripción de la prueba
 
-La empresa Company INC desea realizar un programa que le permita el registro de sus clientes y una posterior asignación de uno de sus agentes de servicio para la gestión.
+La empresa Existaya desea realizar un programa que le permita el registro votos en heroes de television y una ilustracion llevada hasta el backend
 
 Requerimientos del programa
 
@@ -54,15 +54,16 @@ donde **sitema ** es el nombre de la base de datos que se crea en **_phpMyadmin_
 
 ## Documentacion postman
 
-La idea general es crear una aplicación en la cual se puedan hacer peticiones http, por lo mismo se utiliza postman para ello: [postman](https://documenter.getpostman.com/view/19592464/UzQpx83a)
+La idea general es crear una aplicación en la cual se puedan hacer peticiones http, por lo mismo se utiliza postman para ello: [postman](https://documenter.getpostman.com/view/19592464/UzQxLibs)
 
 ## Archivo back:
 
-[link de back]()
+para desplegar el back se recomienda iniciar viendo esta documentacion, en caso de que no posea conocimientos con java [link back java ejemplo ](https://github.com/kenpulicorre/Java_Back_parameta)
+[link de back](https://github.com/kenpulicorre/back_existaya)
 
 ## Archivo front:
 
-[link de front](https://github.com/kenpulicorre/)
+[link de back](https://github.com/kenpulicorre/front_parameta)
 
 para ejecutar el archivo front, solo debe de dirijirse a la carpeta `cliente` y dijitar
 
@@ -75,3 +76,7 @@ y una vez se tengan instaladas las dependencias ejecutar la aplicacion,
 ```
 npm start
 ```
+
+## nota:
+
+- para poder ejecutar un dispatch a el back para el registro de votos se debe de hacer la funcion y hacer el update desde un body en el cual se le envie los datos del personaje al cual se le desea asignar la votacion.
