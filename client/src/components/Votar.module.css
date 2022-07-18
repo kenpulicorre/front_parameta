@@ -1,5 +1,6 @@
 .estilo_l {
-  background: #0352568c;
+  color: white;
+  background: #041036c5;
 }
 
 .infoContainer {
@@ -17,7 +18,7 @@
 }
 .stylo5 {
   background: #2c4a00;
-  width: 527px;
+  width: 200px;
   height: 65px;
 }
 .stylo4 {
@@ -48,4 +49,22 @@
   0% {
     width: 0;
   }
+}
+
+.stylo6 {
+  display: flex;
+  align-content: center;
+  /* align-items: flex-start; */
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(1, 4, 51, 0.765);
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  /* position: absolute; */
+  top: 1px;
+  color: rgb(238, 106, 106);
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 2em;
+  flex-direction: column;
 }

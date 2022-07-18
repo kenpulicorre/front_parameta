@@ -4,6 +4,7 @@ import {
   GET_TYPES,
   GET_DETAIL,
   POST_CARD,
+  UPDATE_CARD,
   POST_CIUDAD,
   POST_AGENTE,
 } from "../actions/index.js";
@@ -50,8 +51,12 @@ function rootReducer(state = initialState, action) {
       return { ...state, types: action.payload };
     case POST_CARD:
       return { ...state };
+    case UPDATE_CARD:
+      return { ...state };
+
     case POST_CIUDAD:
       return { ...state };
+
     case POST_AGENTE:
       return { ...state };
     case GET_DETAIL:

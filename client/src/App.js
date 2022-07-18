@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import CreateForm from "./components/CreateForm";
 import DetailPoke from "./components/DetailPoke";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
 function App() {
   return (
     <BrowserRouter>

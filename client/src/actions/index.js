@@ -6,6 +6,7 @@ export const ORDER_BY_NAME = "orderByName"; //ORDEN ALFABETICO
 export const GET_NAME_POKEMONS = "getNamePokemons"; //QUERY
 export const GET_TYPES = "getTypes";
 export const POST_CARD = "postCard";
+export const UPDATE_CARD = "updateCard";
 export const POST_CIUDAD = "postCiudad";
 export const GET_DETAIL = "getDetalleCliente"; //BY iD PARAMS
 export const ORDER_BY_FUERZA = "orderByFuerza";
@@ -109,6 +110,25 @@ export function postCard(params) {
     }
   };
 }
+
+export function updateCard(params) {
+  console.log("----updateCard Ok!");
+  return async function (dispatch) {
+    try {
+      console.log("------parametros post", params);
+      const json = await axios.put("http://localhost:8080/movie", params);
+      console.log(json);
+      //return json
+      return dispatch({
+        type: UPDATE_CARD,
+        payload: json,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function postCiudad(params) {
   console.log("----postCiudadOk!");
   return async function (dispatch) {

@@ -87,14 +87,15 @@ export default function Home(params) {
     <div>
       <div class="container">
         <div className={`row ${estilos.stylo3}`}>
-          <div class="col-sm-12">
-            <Votar />
+          <div className={`col-sm-10${estilos.stylo3}`}>
+            <div className={`col-sm-10${estilos.stylo3b}`}>
+              <Votar />
+            </div>
           </div>
 
           {/* <div>
             <VotarCorre done={Math.floor(plike, -1)} />
           </div> */}
-          <div class="col-sm-4">One of three columns</div>
         </div>
 
         <div className={`row ${estilos.stylo2}`}>

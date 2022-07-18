@@ -201,11 +201,14 @@ h2 {
 }
 .stylo3 {
   /* background-image: url(https://www.superherodb.com/pictures2/portraits/10/100/111.jpg); */
-  background-image: url(https://frasesdelavida.com/wp-content/uploads/2018/04/Frases-de-superheroes.jpg);
+  background-image: url(https://lamanodelextranjero.files.wordpress.com/2022/04/algunos-de-los-mas-famosos-heroes-de-dc-comics.jpg);
   align-items: center;
   border: 1px solid red;
   background-color: rgba(184, 169, 169, 0.696);
   color: blue;
+}
+.stylo3b {
+  background-color: rgba(15, 11, 11, 0.696);
 }
 
 .stylo4 {
