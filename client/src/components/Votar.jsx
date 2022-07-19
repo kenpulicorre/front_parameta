@@ -10,6 +10,8 @@ import VotarCorre from "./VotarCorre";
 export default function Votar(props) {
   console.log(props);
   const dispatch = useDispatch();
+  const clienteDetalle = useSelector((state) => state.detalle);
+
   const { id } = useParams();
 
   const [like, setLike] = useState(0);
@@ -39,6 +41,7 @@ export default function Votar(props) {
     //   porcentaje_Deslike
     // );
   }, [id, dispatch, like, deslike]);
+
   function handleBotolike() {
     let num = like + 1;
     //setOrder(`actualiza estado local`);
@@ -76,9 +79,10 @@ export default function Votar(props) {
       votoN: 1,
     });
   }
-  function handleBotonSafe() {}
+  function handleBotonSafe() {
+    console.log("hola");
+  }
 
-  const clienteDetalle = useSelector((state) => state.detalle);
   let indice = imagex;
   let nombre = clienteDetalle.nombre;
   let posicion = indice.findIndex((e) => e.nom === nombre);

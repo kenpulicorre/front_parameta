@@ -21,6 +21,8 @@ export default function Card({
   first_appearance,
   characters,
   img,
+  votos,
+  votosN,
 }) {
   console.log("el type es ", name);
 
@@ -46,6 +48,8 @@ export default function Card({
         <p>first_appearance:{first_appearance}</p> */}
       </div>
       <p>characters:{characters}</p>
+      <p>Likes total:{votos}</p>
+      <p>Dislike Total:{votosN}</p>
       <hr></hr>
     </div>
   );

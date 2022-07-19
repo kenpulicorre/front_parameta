@@ -176,13 +176,16 @@ export default function getClientes() {
   return async function (dispatch) {
     try {
       var json = await axios.get(`http://localhost:8080/movie`, {});
+      if (!json) {
+        console.log("envie data creada");
+      }
 
       return dispatch({
         type: GET_CLIENTES,
         payload: json.data,
       });
     } catch (error) {
-      alert("Falla en obtencion  desde base de datos");
+      // alert("Falla en obtencion  desde base de datos");
       console.log(error);
     }
   };

@@ -18,6 +18,7 @@ import agente from "./Agente";
 import Loader from "./Loader";
 import Votar from "./Votar";
 import VotarCorre from "./VotarCorre";
+import Bd from "./Bd";
 
 //-----------------------------------------
 var señal;
@@ -27,6 +28,8 @@ export default function Home(params) {
   const allClientes = useSelector((state) => state.todosClientes); //mapstatetoprops
   const [order, setOrder] = useState("");
   const [signal, setSignal] = useState(true);
+  const [cardPag, setCardPag] = useState();
+
   //------------------cartastopage-----
   const [currentPage, setCurrentPage] = useState(1);
   const [pokePage, setPokePage] = useState(12);
@@ -34,52 +37,59 @@ export default function Home(params) {
   const [like, setLike] = useState(0);
   const [deslike, setDeslike] = useState(0);
   const [plike, setPLike] = useState(0);
-  const [pDlike, setPDeslike] = useState(0);
+  const [card, setcard] = useState();
 
   const endPoke = currentPage * pokePage;
   const iniPoke = endPoke - pokePage;
 
-  const cardsToPage = allClientes;
+  let cardsToPage = allClientes;
+  //  setcard(allClientes);//lo hice en el usefect
+
   const setPaginado = (nPage) => {
     setCurrentPage(nPage);
   };
 
+  if (allClientes) {
+    console.log("-------------------ni un poketcito");
+  }
+
   //------------------fin cartasToPage-----
+  useEffect(() => {
+    setcard(allClientes);
+  }, []);
 
   useEffect(() => {
     setSignal(true);
     dispatch(getClientes());
-
     // dispatch(getTypes());
     dispatch(restartDetalle());
     señal = true;
-
-    // setTimeout(function () {
-    //   setSignal(false);
-    //   if (allClientes.length < 1) {
-    //     console.log("si Aun no hay clientes, debe crearlos!");
-    //   }
-    // }, 10);
-    // console.log("señallllllllllllllllllllllllllll\n", señal);
-    // let total = like + deslike;
-    // let porcentaje_like = (like / total) * 100;
-    // let porcentaje_Deslike = (deslike / total) * 100;
-    // setPLike(porcentaje_like);
-    // setPDeslike(porcentaje_Deslike);
-    // console.log(
-    //   "------------los porcentajes son:*****************de like****",
-    //   porcentaje_like,
-    //   "porcentaje deslike~~~~~~~:",
-    //   porcentaje_Deslike
-    // );
+    console.log("+++++++++++++++++las cartas son+++++++++++", card);
   }, [dispatch]); //[] =1sola vez,[state]=cada state ejecuta
 
+  useEffect(() => {
+    console.log("+++++++++++++++++las cartas son+++++++++++", card);
+  }, [card]); //[] =1sola vez,[state]=cada state ejecuta
   //----fin hook iniciales---------
   //----funciones-----------------
 
   //----fin funciones--------------
+  let datosN = Bd();
 
   if (allClientes.length < 1 && signal) {
+    console.log("-------------------ni un poketcito");
+    if (cardsToPage.length <= 0) {
+      console.log("no hay cartas-------------");
+      cardsToPage = datosN;
+    } else {
+      console.log("si hay cartas-------------");
+      cardsToPage = allClientes;
+    }
+
+    setTimeout(() => {
+      setcard(cardsToPage);
+      setSignal(false);
+    }, 1000);
     return <Loader />;
   }
 
@@ -102,7 +112,7 @@ export default function Home(params) {
           {/* <CreateForm /> */}
           {/* llamando al componente card----- */}
           <div className={estilos.contenedor_pokes}>
-            {cardsToPage?.map((el) => {
+            {card?.map((el) => {
               let heroImage = `${el.nombre}`;
               return (
                 <Fragment key={el.idmovie}>
@@ -119,6 +129,9 @@ export default function Home(params) {
                       first_appearance={el.first_appearance}
                       characters={el.characters}
                       img={heroImage}
+                      votos={el.votos}
+                      votosN={el.votosN}
+             
                     />
                   </Link>
                 </Fragment>
@@ -129,83 +142,5 @@ export default function Home(params) {
         </div>
       </div>
     </div>
-
-    //-------------------------bootstrap-----------------------
-    // <div className={estilos.contenedor}>
-    //   <h1 className={estilos.title}>¡Creacion de Formato!</h1>
-    //   <div className={estilos.selector}>
-    //     <p className={estilos.selector2}>
-    //       <Link to="/cliente" className={estilos.crear_poke}>
-    //         Crea cliente
-    //       </Link>
-    //     </p>
-    //     {/* lalmado componente search */}
-    //   </div>
-
-    //   {/* filtros------------------------- */}
-    //   <div className={estilos.Contenedor_filtro}>
-    //     {/* ascendentemente como descendentemente */}
-    //     <select
-    //       name=""
-    //       id=""
-    //       onChange={(e) => handleOrder(e)}
-    //       className={estilos.select}
-    //     >
-    //       <option value="Asc">Ascendente</option>
-    //       <option value="Desc">Descenden</option>
-    //     </select>
-
-    //     {/* llamando al componente Paginado */}
-
-    //     {/* <CreateForm /> */}
-    //     {/* llamando al componente card----- */}
-    //     <div className={estilos.contenedor_pokes}>
-    //       {cardsToPage?.map((el) => {
-    //         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", el);
-    //         let heroImage = `${el.nombre}`;
-    //         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~heroImage~", heroImage);
-
-    //         return (
-    //           <Fragment key={el.idmovie}>
-    //             <Link
-    //               to={"/home/" + el.idmovie}
-    //               className={estilos.contenedor_1pke}
-    //             >
-    //               <Card
-    //                 key={el.idmovie}
-    //                 id={el.idmovie}
-    //                 name={el.nombre}
-    //                 superhero={el.superhero}
-    //                 publisher={el.publisher}
-    //                 first_appearance={el.first_appearance}
-    //                 characters={el.characters}
-    //                 img={heroImage}
-    //               />
-    //             </Link>
-    //           </Fragment>
-    //         );
-    //       })}
-    //     </div>
-    //     {/* llamando al componente card----- */}
-    //   </div>
-
-    //   <div class="container">
-    //     <div class="row align-items-start">
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //     </div>
-    //     <div class="row align-items-center">
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //     </div>
-    //     <div class="row align-items-end">
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //       <div class="col">One of three columns</div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
