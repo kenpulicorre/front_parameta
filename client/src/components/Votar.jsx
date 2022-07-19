@@ -13,7 +13,6 @@ export default function Votar(props) {
   const clienteDetalle = useSelector((state) => state.detalle);
 
   const { id } = useParams();
-
   const [like, setLike] = useState(0);
   const [deslike, setDeslike] = useState(0);
   const [plike, setPLike] = useState(0);
@@ -24,6 +23,10 @@ export default function Votar(props) {
     voto: 0,
     votoN: 0,
   });
+  useEffect(() => {
+    setLike(clienteDetalle.votos);
+    setDeslike(clienteDetalle.votosN);
+  }, []);
 
   useEffect(() => {
     dispatch(getDetalleCliente(id));
@@ -40,15 +43,11 @@ export default function Votar(props) {
     //   "porcentaje deslike~~~~~~~:",
     //   porcentaje_Deslike
     // );
-  }, [id, dispatch, like, deslike]);
+  }, [id, dispatch, like, deslike, card]);
 
   function handleBotolike() {
     let num = like + 1;
-    //setOrder(`actualiza estado local`);
-    // alert("Has dado un like a este super Heroe!");
-    // alert("Has dado un deslike a este super Heroe!");
     setLike(num);
-    console.group("----------like es++++++++++++++++++++++++", like);
     setCard({
       idmovie: clienteDetalle.idmovie,
       nombre: clienteDetalle.nombre,
@@ -62,11 +61,8 @@ export default function Votar(props) {
     });
   }
   function handleBotoDeslike() {
-    alert("Has dado un deslike a este super Heroe!");
     let num = deslike + 1;
-    //setOrder(`actualiza estado local`);
     setDeslike(num);
-    console.group("----------deslike  es++++++++++++++++++++++++", deslike);
     setCard({
       idmovie: clienteDetalle.idmovie,
       nombre: clienteDetalle.nombre,
@@ -101,6 +97,9 @@ export default function Votar(props) {
               <hr></hr>
 
               <h3>nombre: {clienteDetalle.nombre}</h3>
+              <h3>Likes: {clienteDetalle.votos}</h3>
+              <h3>Deslikes: {clienteDetalle.votoN}</h3>
+
               <p></p>
             </div>
 
