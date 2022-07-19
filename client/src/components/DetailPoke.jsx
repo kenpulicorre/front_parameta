@@ -9,10 +9,10 @@ import imagex from "./images";
 import Bd from "./Bd";
 
 export default function DetailPoke(props) {
-  console.log(props);
+  // console.log(props);
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log("paramken1 -------", id);
+  // console.log("paramken1 -------", id);
   const [card, setcard] = useState("hola");
   const [signal, setSignal] = useState(true);
 
@@ -20,11 +20,11 @@ export default function DetailPoke(props) {
     setSignal(true);
     dispatch(getDetallecard(id));
     dispatch(getDetallecardglobal(id));
-    console.log("kkk las cartas son+++++++++++", card);
+    // console.log("kkk las cartas son+++++++++++", card);
   }, [id, dispatch]);
   //-----------1
   useEffect(() => {
-    console.log("--------------idini", id);
+    // console.log("--------------idini", id);
     setcard(clienteDetalle);
   }, []);
   //----------1
@@ -35,13 +35,14 @@ export default function DetailPoke(props) {
   //---------------2
 
   useEffect(() => {
-    console.log("+++++++++++++++++las cartas son+++++++++++", card);
+    // console.log("+++++++++++++++++las cartas son+++++++++++", card);
+    console.log(card);
   }, [card]); //[] =1sola vez,[state]=cada state
 
   let datosN = Bd();
 
   if (clienteDetalle?.length < 1 && signal) {
-    console.log("-------------------ni un poketcito");
+    // console.log("-------------------ni un poketcito");
     if (cardsToPage.length <= 0) {
       console.log("no hay cartas-------------");
       cardsToPage = datosN[id - 1];
@@ -67,13 +68,13 @@ export default function DetailPoke(props) {
       }
 
       setTimeout(() => {
-        dispatch(getDetallecardglobal(id));
+        // dispatch(getDetallecardglobal(id));
         setcard(cardsToPage);
-      }, 100);
+      }, 1);
     } else {
       cardsToPage = clienteDetalle;
       setTimeout(() => {
-        dispatch(getDetallecardglobal(id));
+        // dispatch(getDetallecardglobal(id));
         setcard(cardsToPage);
       }, 100);
     }
