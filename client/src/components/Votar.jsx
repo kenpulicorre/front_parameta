@@ -34,7 +34,7 @@ export default function Votar(props) {
     setDeslike(clienteDetalle?.votosN);
   }, []);
   const clienteDetalle = useSelector((state) => state.detalle);
-  const clienteDetallex = useSelector((state) => state.detalle);
+  const clienteDetallex = useSelector((state) => state.detalleg);
   //---------------
   console.log("*******paramken-------------", id);
   if (clienteDetallex?.length < 1) {

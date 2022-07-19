@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getDetallecard } from "../actions/index.js";
+import { getDetallecard, getDetallecardglobal } from "../actions/index.js";
 import estilos from "./DetailPoke.module.css";
 import imagex from "./images";
 import Bd from "./Bd";
@@ -19,10 +19,12 @@ export default function DetailPoke(props) {
   useEffect(() => {
     setSignal(true);
     dispatch(getDetallecard(id));
+    dispatch(getDetallecardglobal(id));
     console.log("kkk las cartas son+++++++++++", card);
   }, [id, dispatch]);
   //-----------1
   useEffect(() => {
+    console.log("--------------idini", id);
     setcard(clienteDetalle);
   }, []);
   //----------1
@@ -51,8 +53,30 @@ export default function DetailPoke(props) {
     setTimeout(() => {
       setSignal(false);
       dispatch(getDetallecard(id));
+      dispatch(getDetallecardglobal(id));
       setcard(cardsToPage);
     }, 1000);
+  } else {
+    if (clienteDetalle?.length < 1) {
+      if (cardsToPage.length <= 0) {
+        console.log("no hay cartas-------------");
+        cardsToPage = datosN[id - 1];
+      } else {
+        console.log("si hay cartas-------------");
+        cardsToPage = clienteDetalle;
+      }
+
+      setTimeout(() => {
+        dispatch(getDetallecardglobal(id));
+        setcard(cardsToPage);
+      }, 100);
+    } else {
+      cardsToPage = clienteDetalle;
+      setTimeout(() => {
+        dispatch(getDetallecardglobal(id));
+        setcard(cardsToPage);
+      }, 100);
+    }
   }
 
   //-----------------2

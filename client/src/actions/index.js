@@ -4,6 +4,7 @@ export const GET_CARDS = "getCards";
 export const POST_CARD = "postCard";
 export const UPDATE_CARD = "updateCard";
 export const GET_DETAIL = "getDetallecard"; //BY iD PARAMS
+export const GET_DETAILG = "getDetallecardglobal"; //BY iD PARAMS
 export const ORDER_BY_FUERZA = "orderByFuerza";
 export const DETALLE_RESTAURAR = "restartDetalle";
 
@@ -49,6 +50,14 @@ export function getDetallecard(id) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+export function getDetallecardglobal(id) {
+  console.log("----getDetallecardglobal Ok!");
+
+  return {
+    type: GET_DETAILG,
+    payload: id,
   };
 }
 //--

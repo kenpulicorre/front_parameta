@@ -43,24 +43,32 @@ export default function Home(params) {
   };
 
   //------------------fin cartasToPage-----
+  const allClientes = useSelector((state) => state.todosClientes); //mapstatetoprops
+
+  console.log("******************allclientes", allClientes);
+  console.log("******************card", card);
+
   useEffect(() => {
     dispatch(getClientes());
+
     setcard(allClientes);
   }, []);
-
-  const allClientes = useSelector((state) => state.todosClientes); //mapstatetoprops
+  console.log("******************allclientes2", allClientes);
   let cardsToPage = allClientes;
+  console.log("******************cardsToPage", cardsToPage);
 
   useEffect(() => {
     setSignal(true);
     dispatch(getClientes());
     dispatch(restartDetalle());
     señal = true;
-    console.log("+++++++++++++++++las cartas son+++++++++++", card);
+    //console.log("+++++++++++++++++las cartas son+++++++++++", card);
   }, [dispatch]); //[] =1sola vez,[state]=cada state ejecuta
+  console.log("******************allclientes3", allClientes);
+  console.log("******************cardsToPage2", cardsToPage);
 
   useEffect(() => {
-    console.log("+++++++++++++++++las cartas son+++++++++++", card);
+    console.log("----en usefect card:", card);
   }, [card]); //[] =1sola vez,[state]=cada state ejecuta
   //----fin hook iniciales---------
   //----funciones-----------------
@@ -69,12 +77,12 @@ export default function Home(params) {
   let datosN = Bd();
 
   if (allClientes.length < 1 && signal) {
-    console.log("-------------------ni un poketcito");
+    // console.log("-------------------ni un poketcito");
     if (cardsToPage.length <= 0) {
-      console.log("no hay cartas-------------");
+      // console.log("no hay cartas-------------");
       cardsToPage = datosN;
     } else {
-      console.log("si hay cartas-------------");
+      // console.log("si hay cartas-------------");
       cardsToPage = allClientes;
     }
 
@@ -83,6 +91,24 @@ export default function Home(params) {
       setSignal(false);
     }, 1000);
     return <Loader />;
+  } else {
+    // console.log("si hay cartas-------------");
+
+    if (allClientes.length < 1) {
+      cardsToPage = datosN;
+      setTimeout(() => {
+        setcard(cardsToPage);
+        //     setSignal(false);
+      }, 1000);
+    } else {
+      if (allClientes.length >= 1) {
+        cardsToPage = allClientes;
+        setTimeout(() => {
+          setcard(cardsToPage);
+          setSignal(false);
+        }, 1000);
+      }
+    }
   }
 
   return (
