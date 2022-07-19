@@ -7,10 +7,14 @@ import { getDetallecard, updateCard } from "../actions/index.js";
 import estilos from "./Votar.module.css";
 import imagex from "./images";
 import VotarCorre from "./VotarCorre";
+import Bd from "./Bd";
 export default function Votar(props) {
   console.log(props);
   const dispatch = useDispatch();
-  const clienteDetalle = useSelector((state) => state.detalle);
+  // const clienteDetalle = useSelector((state) => state.detalle);
+  let datosN = Bd();
+
+  const [cardid, setcardid] = useState();
 
   const { id } = useParams();
   const [like, setLike] = useState(0);
@@ -25,9 +29,36 @@ export default function Votar(props) {
     votoN: 0,
   });
   useEffect(() => {
-    setLike(clienteDetalle.votos);
-    setDeslike(clienteDetalle.votosN);
+    setcardid(clienteDetalle);
+    setLike(clienteDetalle?.votos);
+    setDeslike(clienteDetalle?.votosN);
   }, []);
+  const clienteDetalle = useSelector((state) => state.detalle);
+  const clienteDetallex = useSelector((state) => state.detalle);
+  //---------------
+  console.log("*******paramken-------------", id);
+  if (clienteDetallex?.length < 1) {
+    console.log("-------------------ni un poketcito");
+    // if (cardsToPage.length <= 0) {
+    //   console.log("no hay cartas-------------");
+    let cardsToPage = datosN.find((e) => e.idmovie == id); //detalle cliente
+    // } else {
+
+    console.log("*******params-------------", id);
+    console.log("*******carta seleccionada-------------", cardsToPage);
+    //   cardsToPage = allClientes;
+    // }
+
+    // setTimeout(() => {
+    //   setcard(cardsToPage);
+    //   setSignal(false);
+    // }, 1000);
+    // return <Loader />;
+  } else {
+    console.log("--------tiene base de datos corriendo");
+  }
+
+  //----------------
 
   useEffect(() => {
     dispatch(getDetallecard(id));
@@ -83,25 +114,25 @@ export default function Votar(props) {
   }
 
   let indice = imagex;
-  let nombre = clienteDetalle.nombre;
+  let nombre = clienteDetalle?.nombre;
   let posicion = indice.findIndex((e) => e.nom === nombre);
 
   return (
     <div>
       <h1 className={estilos.container0}></h1>
       <div>
-        {clienteDetalle.idmovie > 0 ? (
+        {clienteDetalle?.idmovie > 0 ? (
           <div className={estilos.infoContainer}>
             <div className={estilos.stylo6}>
               <h1 className={estilos.name}>
                 {" "}
-                Superheroe:{clienteDetalle.superhero}
+                Superheroe:{clienteDetalle?.superhero}
               </h1>
               <hr></hr>
 
-              <h3>nombre: {clienteDetalle.nombre}</h3>
+              {/* <h3>nombre: {clienteDetalle.nombre}</h3>
               <h3>Likes: {clienteDetalle.votos}</h3>
-              <h3>Deslikes: {clienteDetalle.votoN}</h3>
+              <h3>Deslikes: {clienteDetalle.votoN}</h3> */}
 
               <p></p>
             </div>

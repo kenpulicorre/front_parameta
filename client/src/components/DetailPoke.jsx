@@ -6,18 +6,58 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { getDetallecard } from "../actions/index.js";
 import estilos from "./DetailPoke.module.css";
 import imagex from "./images";
+import Bd from "./Bd";
+
 export default function DetailPoke(props) {
   console.log(props);
   const dispatch = useDispatch();
   const { id } = useParams();
-  useEffect(() => {
-    dispatch(getDetallecard(id));
-  }, [id, dispatch]);
-  const clienteDetalle = useSelector((state) => state.detalle);
-  let x = [];
+  console.log("paramken1 -------", id);
+  const [card, setcard] = useState("hola");
+  const [signal, setSignal] = useState(true);
 
+  useEffect(() => {
+    setSignal(true);
+    dispatch(getDetallecard(id));
+    console.log("kkk las cartas son+++++++++++", card);
+  }, [id, dispatch]);
+  //-----------1
+  useEffect(() => {
+    setcard(clienteDetalle);
+  }, []);
+  //----------1
+
+  const clienteDetalle = useSelector((state) => state.detalle);
+  let cardsToPage = clienteDetalle;
+  let x = [];
+  //---------------2
+
+  useEffect(() => {
+    console.log("+++++++++++++++++las cartas son+++++++++++", card);
+  }, [card]); //[] =1sola vez,[state]=cada state
+
+  let datosN = Bd();
+
+  if (clienteDetalle?.length < 1 && signal) {
+    console.log("-------------------ni un poketcito");
+    if (cardsToPage.length <= 0) {
+      console.log("no hay cartas-------------");
+      cardsToPage = datosN[id - 1];
+    } else {
+      console.log("si hay cartas-------------");
+      cardsToPage = clienteDetalle;
+    }
+
+    setTimeout(() => {
+      setSignal(false);
+      dispatch(getDetallecard(id));
+      setcard(cardsToPage);
+    }, 1000);
+  }
+
+  //-----------------2
   let indice = imagex;
-  let nombre = clienteDetalle.nombre;
+  let nombre = card?.nombre;
   let posicion = indice.findIndex((e) => e.nom === nombre);
   console.log("----------en detalle posicin", posicion);
   return (
@@ -27,17 +67,18 @@ export default function DetailPoke(props) {
         <Link to="/home">
           <button className={estilos.boton}>VOLVER</button>
         </Link>
-        {clienteDetalle.idmovie > 0 ? (
+        {card?.idmovie > 0 ? (
           <div className={estilos.container}>
-            <h1 className={estilos.name}>{clienteDetalle.nombre}</h1>
+            <h1>hola</h1>
+            <h1 className={estilos.name}>{card.nombre}</h1>
 
-            <img src={imagex[posicion].valor} alt={clienteDetalle.name} />
+            <img src={imagex[posicion].valor} alt={card.name} />
 
             <div className={estilos.infoContainer}>
-              <h3>Id: {clienteDetalle.idmovie}</h3>
-              <h3>nombre: {clienteDetalle.nombre}</h3>
-              <h3>Super Heroe: {clienteDetalle.superhero}</h3>
-              <h3>Actores: {clienteDetalle.characters}</h3>
+              <h3>Id: {card.idmovie}</h3>
+              <h3>nombre: {card.nombre}</h3>
+              <h3>Super Heroe: {card.superhero}</h3>
+              <h3>Actores: {card.characters}</h3>
 
               <p></p>
             </div>
