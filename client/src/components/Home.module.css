@@ -91,11 +91,11 @@ h2 {
   display: inline-grid;
   flex-direction: column;
   padding: 10px;
-  margin: 20px;
+  margin: 30px;
   text-decoration: none;
   margin-top: 10px;
-  width: 220px;
-  height: 450px;
+  width: 300px;
+  height: 570px;
   padding-right: 1em;
   /* justify-content: center; */
   box-shadow: rgba(223, 29, 29, 0.56) 0px 22px 100px 40px;
@@ -128,8 +128,8 @@ h2 {
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  margin: auto;
-  margin-top: 50px;
+  /* margin: auto; */
+  margin-top: 10px;
   margin-left: 40px;
 }
 

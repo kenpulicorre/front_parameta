@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getDetalleCliente } from "../actions/index.js";
+import { getDetallecard } from "../actions/index.js";
 import estilos from "./DetailPoke.module.css";
 import imagex from "./images";
 export default function DetailPoke(props) {
@@ -11,7 +11,7 @@ export default function DetailPoke(props) {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    dispatch(getDetalleCliente(id));
+    dispatch(getDetallecard(id));
   }, [id, dispatch]);
   const clienteDetalle = useSelector((state) => state.detalle);
   let x = [];

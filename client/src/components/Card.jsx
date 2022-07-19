@@ -40,13 +40,8 @@ export default function Card({
         width="200px"
         height="250px"
       />
-
-      <div>
-        <h3>Nombre: {name}</h3>
-        <p>superhero:{superhero}</p>
-        {/* <p>publisher:{publisher}</p>
-        <p>first_appearance:{first_appearance}</p> */}
-      </div>
+      <p>Nombre: {name}</p>
+      <p>superhero:{superhero}</p>
       <p>characters:{characters}</p>
       <p>Likes total:{votos}</p>
       <p>Dislike Total:{votosN}</p>

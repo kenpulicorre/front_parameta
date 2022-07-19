@@ -17,9 +17,13 @@
   padding-bottom: 2em;
 }
 .stylo5 {
-  background: #2c4a00;
-  width: 200px;
+  background: #c42b2b;
+  width: 400px;
   height: 65px;
+  color: #000;
+  border: solid #06011d;
+  font-size: 1.75rem;
+  border-radius: 2.25rem;
 }
 .stylo4 {
   width: 90%;
@@ -67,4 +71,8 @@
   padding-top: 1em;
   padding-bottom: 2em;
   flex-direction: column;
+}
+
+* h3 {
+  text-shadow: -20px 1px 16px #0b96f9;
 }

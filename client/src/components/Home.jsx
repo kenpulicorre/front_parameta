@@ -5,16 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import estilos from "./Home.module.css";
 //acciones
-import {
-  orderByName,
-  getTypes,
-  restartDetalle,
-  postAgente,
-} from "../actions/index.js";
-import getClientes from "../actions/index";
+import { restartDetalle } from "../actions/index.js";
+import getClientes from "../actions/index.js";
 //componentes
 import Card from "./Card";
-import agente from "./Agente";
 import Loader from "./Loader";
 import Votar from "./Votar";
 import VotarCorre from "./VotarCorre";
@@ -25,7 +19,7 @@ var señal;
 export default function Home(params) {
   //----hook iniciales---------
   const dispatch = useDispatch(); //mapdispatchtoprops
-  const allClientes = useSelector((state) => state.todosClientes); //mapstatetoprops
+
   const [order, setOrder] = useState("");
   const [signal, setSignal] = useState(true);
   const [cardPag, setCardPag] = useState();
@@ -42,26 +36,24 @@ export default function Home(params) {
   const endPoke = currentPage * pokePage;
   const iniPoke = endPoke - pokePage;
 
-  let cardsToPage = allClientes;
   //  setcard(allClientes);//lo hice en el usefect
 
   const setPaginado = (nPage) => {
     setCurrentPage(nPage);
   };
 
-  if (allClientes) {
-    console.log("-------------------ni un poketcito");
-  }
-
   //------------------fin cartasToPage-----
   useEffect(() => {
+    dispatch(getClientes());
     setcard(allClientes);
   }, []);
+
+  const allClientes = useSelector((state) => state.todosClientes); //mapstatetoprops
+  let cardsToPage = allClientes;
 
   useEffect(() => {
     setSignal(true);
     dispatch(getClientes());
-    // dispatch(getTypes());
     dispatch(restartDetalle());
     señal = true;
     console.log("+++++++++++++++++las cartas son+++++++++++", card);
@@ -131,7 +123,6 @@ export default function Home(params) {
                       img={heroImage}
                       votos={el.votos}
                       votosN={el.votosN}
-             
                     />
                   </Link>
                 </Fragment>

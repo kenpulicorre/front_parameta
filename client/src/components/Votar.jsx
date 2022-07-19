@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getDetalleCliente, updateCard } from "../actions/index.js";
+import { getDetallecard, updateCard } from "../actions/index.js";
 import estilos from "./Votar.module.css";
 import imagex from "./images";
 import VotarCorre from "./VotarCorre";
@@ -17,6 +17,7 @@ export default function Votar(props) {
   const [deslike, setDeslike] = useState(0);
   const [plike, setPLike] = useState(0);
   const [pDlike, setPDeslike] = useState(0);
+  const [res, setres] = useState("");
   const [card, setCard] = useState({
     idmovie: "",
     nombre: "",
@@ -29,7 +30,7 @@ export default function Votar(props) {
   }, []);
 
   useEffect(() => {
-    dispatch(getDetalleCliente(id));
+    dispatch(getDetallecard(id));
 
     let total = like + deslike;
     let porcentaje_like = (like / total) * 100;
@@ -43,7 +44,7 @@ export default function Votar(props) {
     //   "porcentaje deslike~~~~~~~:",
     //   porcentaje_Deslike
     // );
-  }, [id, dispatch, like, deslike, card]);
+  }, [id, dispatch, res, like, deslike, card]);
 
   function handleBotolike() {
     let num = like + 1;
@@ -76,7 +77,9 @@ export default function Votar(props) {
     });
   }
   function handleBotonSafe() {
-    console.log("hola");
+    dispatch(updateCard(card));
+    setres("modifico en db");
+    alert("se guardo correctamente,  escoja otro personaje");
   }
 
   let indice = imagex;
@@ -119,7 +122,7 @@ export default function Votar(props) {
               <div>
                 <button
                   onClick={(e) => handleBotolike()}
-                  className={`btn btn-primary  ${estilos.stylo5}`}
+                  className={`btn btn-primary background: #c42b2b ${estilos.stylo5}`}
                 >
                   Like
                 </button>
@@ -130,19 +133,7 @@ export default function Votar(props) {
                   >
                     deslike
                   </button>
-
-                  {!Math.floor(plike, -1) ? (
-                    <h1>%DisLike: {0}</h1>
-                  ) : (
-                    <h3>%DisLike: {Math.floor(pDlike, -1)}</h3>
-                  )}
                 </div>
-
-                {!Math.floor(plike, -1) ? (
-                  <h1>%Like: {0}</h1>
-                ) : (
-                  <h1>%Like: {Math.floor(plike, -1)}</h1>
-                )}
               </div>
             ) : (
               <div> vamos...</div>
@@ -150,19 +141,30 @@ export default function Votar(props) {
             {/* //-------------- */}
             <div>
               <VotarCorre done={Math.floor(plike, -1)} />
+              {!Math.floor(plike, -1) ? (
+                <h3>%Like: {0}</h3>
+              ) : (
+                <h3>%Like: {Math.floor(plike, -1)}</h3>
+              )}
+              {!Math.floor(plike, -1) ? (
+                <h3>%DisLike: {0}</h3>
+              ) : (
+                <h3>%DisLike: {Math.floor(pDlike, -1)}</h3>
+              )}
             </div>
 
             {/* //-------------- */}
+            <button
+              onClick={(e) => handleBotonSafe()}
+              className={`btn btn-primary  ${estilos.stylo5}`}
+            >
+              guarde en db
+            </button>
           </div>
         ) : (
           <h1 className={estilos.estilo_l}>Seleccione su heroe...</h1>
         )}
-        <button
-          onClick={(e) => handleBotonSafe()}
-          className={`btn btn-primary  ${estilos.stylo5}`}
-        >
-          guarde en db
-        </button>
+
         <hr></hr>
       </div>
     </div>

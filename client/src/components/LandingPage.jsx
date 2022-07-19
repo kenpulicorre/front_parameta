@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import estilos from "./LandingPage.module.css";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Loader from "./Loader";
-import { postAgente } from "../actions/index.js";
+import { postCard } from "../actions/index.js";
 import agente from "./Agente";
 
 export default function LandingPage(params) {
@@ -14,7 +14,7 @@ export default function LandingPage(params) {
 
   useEffect(() => {
     for (let i = 0; i < datox.length; i++) {
-      dispatch(postAgente(datox[i]));
+      dispatch(postCard(datox[i]));
     }
   }, [dispatch]);
 
